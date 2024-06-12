@@ -1,0 +1,91 @@
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+.container {
+    width: 90%;
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 15px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+
+h1, h2 {
+    text-align: center;
+    font-size: 1.4em;
+    margin: 10px 0;
+}
+
+
+.form-container, .incidents-container {
+    margin: 20px 0;
+    padding: 10px;
+}
+
+
+label {
+    display: block;
+    margin: 10px 0 5px;
+    color: #555;
+}
+
+input, textarea, select, button {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+
+button {
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+li {
+    background-color: #e9e9e9;
+    padding: 10px;
+    margin: 10px 0;
+    border-left: 5px solid #007BFF;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+
+@media only screen and (max-width: 600px) {
+    h1, h2 {
+        font-size: 1.2em;
+    }
+    input, textarea, select, button {
+        padding: 7px;
+    }
+    button {
+        font-size: 0.9em;
+    }
+}

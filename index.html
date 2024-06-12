@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Citizen Reporting App</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Report an Incident</h1>
+        <div class="form-container">
+            <form id="incidentForm">
+                <label for="title">Title:</label>
+                <input type="text" id="title" required>
+
+                <label for="description">Description:</label>
+                <textarea id="description" required></textarea>
+
+                <label for="category">Category:</label>
+                <select id="category" required>
+                    <option value="accident">Accident</option>
+                    <option value="fighting">Fighting</option>
+                    <option value="rioting">Rioting</option>
+                </select>
+
+                <label for="photo">Photo:</label>
+                <input type="file" id="photo" accept="image/*">
+
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+        <h2>Reported Incidents</h2>
+        <div class="incidents-container">
+            <ul id="incidentList"></ul>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
+
