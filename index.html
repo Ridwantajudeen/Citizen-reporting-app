@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Citizen Reporting App</title>
     <link rel="stylesheet" href="style.css">
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </head>
 <body>
     <div class="container">
@@ -27,6 +28,8 @@
                 <label for="photo">Photo:</label>
                 <input type="file" id="photo" accept="image/*">
 
+                <div class="g-recaptcha" data-sitekey="6LfZB_cpAAAAAJxG8LMsEpm0-vPmKZvZTwTFKj8x"></div>
+                
                 <button type="submit">Submit</button>
             </form>
         </div>
@@ -39,4 +42,3 @@
     <script src="app.js"></script>
 </body>
 </html>
-
