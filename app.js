@@ -9,6 +9,13 @@ document.addEventListener('DOMContentLoaded', function() {
         const description = document.getElementById('description').value;
         const category = document.getElementById('category').value;
         const photoInput = document.getElementById('photo');
+        const recaptchaResponse = grecaptcha.getResponse();
+
+        if (!recaptchaResponse) {
+            alert('Please complete the reCAPTCHA.');
+            return;
+        }
+
         let photo = '';
 
         if (photoInput.files.length > 0) {
@@ -16,21 +23,40 @@ document.addEventListener('DOMContentLoaded', function() {
             const reader = new FileReader();
             reader.onloadend = function() {
                 photo = reader.result;
-                saveIncident(title, description, category, photo);
+                saveIncident(title, description, category, photo, recaptchaResponse);
             }
             reader.readAsDataURL(file);
         } else {
-            saveIncident(title, description, category, photo);
+            saveIncident(title, description, category, photo, recaptchaResponse);
         }
     });
 
-    function saveIncident(title, description, category, photo) {
-        const incidents = JSON.parse(localStorage.getItem('incidents')) || [];
-        const incident = { title, description, category, photo, date: new Date() };
-        incidents.push(incident);
-        localStorage.setItem('incidents', JSON.stringify(incidents));
-        loadIncidents();
-        alert('Incident reported successfully!');
+    function saveIncident(title, description, category, photo, recaptchaResponse) {
+        // Verify the reCAPTCHA response on your server (you can use a simple API or your backend)
+        fetch('https://www.google.com/recaptcha/api/siteverify', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            body: `secret=6LfZB_cpAAAAACDr_7V3191KX3e2iaVdn2_-mehR&response=${recaptchaResponse}`
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                const incidents = JSON.parse(localStorage.getItem('incidents')) || [];
+                const incident = { title, description, category, photo, date: new Date() };
+                incidents.push(incident);
+                localStorage.setItem('incidents', JSON.stringify(incidents));
+                loadIncidents();
+                alert('Incident reported successfully!');
+                grecaptcha.reset();
+            } else {
+                alert('reCAPTCHA verification failed. Please try again.');
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
     }
 
     function loadIncidents() {
