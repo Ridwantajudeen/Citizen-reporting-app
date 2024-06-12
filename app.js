@@ -32,13 +32,13 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     function saveIncident(title, description, category, photo, recaptchaResponse) {
-        // Verify the reCAPTCHA response on your server (you can use a simple API or your backend)
+        
         fetch('https://www.google.com/recaptcha/api/siteverify', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded'
             },
-            body: `secret=6LfZB_cpAAAAACDr_7V3191KX3e2iaVdn2_-mehR&response=${recaptchaResponse}`
+            body: `secret=6Le7DPcpAAAAAHCv67-acvlDGGueKrFv8GKXc_nZ&response=${recaptchaResponse}`
         })
         .then(response => response.json())
         .then(data => {
